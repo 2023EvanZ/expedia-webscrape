@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Search Results</title>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Search Results</h1>
+        {% for item in data.hotels %}
+            <h2><strong>Hotel Name:</strong> {{ item }}</h2>
+        {% endfor %}
+        {% for location in data.location %}
+            <p><strong>Location:</strong> {{ location }} </p>
+        {% endfor %}
+        {% for price in data.prices %}
+            <p>{{ price }}</p>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Amenities:</h3>
+                <blockquote>
+                    {% for amenity in data.amenities %}
+                        {% for a_amenity in amenity %}
+                            <li>{{ a_amenity }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                <footer>From Expedia</footer>
+                </blockquote>
+            </div>
+            <div class="col-sm-4">
+                <h3>Reviews:</h3>
+                <blockquote>
+                    {% for review in data.reviews %}
+                        {% for a_review in review %}
+                            <li>{{ a_review }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    <footer>From Expedia</footer>
+                </blockquote>
+            </div>
+            <div class="col-sm-4">
+                <h3>Room Image:</h3>
+                {% for image in data.images %}
+                    <img src={{image}} alt="Provided image"/>
+                {% endfor %}
+                {% for room in data.rooms %}
+                    <p>Room Description: {{ room }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="pager">
+        <a href="/">New Search</a>
+    </div>
+</body>
+</html>
